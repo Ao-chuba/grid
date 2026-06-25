@@ -1,0 +1,649 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>grid.poisson module &#8212; Welcome to Grid Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyapi/grid.poisson';</script>
+    <link rel="icon" href="../_static/grid_logo_website.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="grid.rtransform module" href="grid.rtransform.html" />
+    <link rel="prev" title="grid.periodicgrid module" href="grid.periodicgrid.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/grid_logo_website.svg" class="logo__image only-light" alt="Welcome to Grid Documentation - Home"/>
+    <img src="../_static/grid_logo_website.svg" class="logo__image only-dark pst-js-only" alt="Welcome to Grid Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Grid’s Documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../onedgrids.html">One-Dimensional Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../radial_transf.html">Radial Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Conventions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/One_dimensional_grids.html">One-Dimensional Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Angular_grid.html">Angular Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Atom_Grid_Construction.html">Atom Grid Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Atom_Grid.html">Atom Grid Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Molecular_Grid_Construction.html">Molecular Grid Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Molecular_Grid.html">Molecular Grid Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Cubic_Grids.html">Cubic Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Interpolation_and_Poisson.html">Interpolation and Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Multipole_Moments.html">Multipole Moments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="grid.html">grid package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grid.angular.html">grid.angular module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.atomgrid.html">grid.atomgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.basegrid.html">grid.basegrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.becke.html">grid.becke module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.coulomb.html">grid.coulomb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.cubic.html">grid.cubic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.hirshfeld.html">grid.hirshfeld module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.molgrid.html">grid.molgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.ngrid.html">grid.ngrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.ode.html">grid.ode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.onedgrid.html">grid.onedgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.periodicgrid.html">grid.periodicgrid module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">grid.poisson module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.rtransform.html">grid.rtransform module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.utils.html">grid.utils module</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/theochem/grid" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/theochem/grid/issues/new?title=Issue%20on%20page%20%2Fpyapi/grid.poisson.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pyapi/grid.poisson.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>grid.poisson module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.poisson.solve_poisson_bvp"><code class="docutils literal notranslate"><span class="pre">solve_poisson_bvp()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.poisson.solve_poisson_ivp"><code class="docutils literal notranslate"><span class="pre">solve_poisson_ivp()</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-grid.poisson">
+<span id="grid-poisson-module"></span><h1>grid.poisson module<a class="headerlink" href="#module-grid.poisson" title="Link to this heading">#</a></h1>
+<p>Poisson solver module.</p>
+<p>This module solves the following Poisson equation:</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 V(r) = -4\pi \rho(r),\]</div>
+<p>for some Coulomb potential <span class="math notranslate nohighlight">\(V(r)\)</span> and charge density <span class="math notranslate nohighlight">\(\rho(r)\)</span>
+over a centered atomic grid. It is recommended to use the boundary value problem
+for handing singularities near the origin of the atomic grid.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="grid.poisson.solve_poisson_bvp">
+<span class="sig-prename descclassname"><span class="pre">grid.poisson.</span></span><span class="sig-name descname"><span class="pre">solve_poisson_bvp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molgrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.molgrid.html#grid.molgrid.MolGrid" title="grid.molgrid.MolGrid"><span class="pre">MolGrid</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="grid.atomgrid.html#grid.atomgrid.AtomGrid" title="grid.atomgrid.AtomGrid"><span class="pre">AtomGrid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_vals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.rtransform.html#grid.rtransform.BaseTransform" title="grid.rtransform.BaseTransform"><span class="pre">BaseTransform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">boundary</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">include_origin</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">remove_large_pts</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">1000000.0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.poisson.solve_poisson_bvp" title="Link to this definition">#</a></dt>
+<dd><p>Return interpolation of the solution to the Poisson equation solved as a boundary value problem.</p>
+<p>The Poisson equation solves for function <span class="math notranslate nohighlight">\(g\)</span> of the following:</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 g = (-4\pi) f,\]</div>
+<p>for a fixed function <span class="math notranslate nohighlight">\(f\)</span>, where <span class="math notranslate nohighlight">\(\nabla^2\)</span> is the Laplacian.  This
+is transformed to an set of ODE problems as a boundary value problem. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<p>If boundary is not provided, then the boundary of <span class="math notranslate nohighlight">\(g\)</span> for large r is set to
+<span class="math notranslate nohighlight">\(\int \int \int f(r, \theta, \phi) / r\)</span>.  The solution <span class="math notranslate nohighlight">\(g\)</span> is assumed to be
+zero at the origin <span class="math notranslate nohighlight">\(g(0, \theta, \phi) = 0\)</span>.  Use <cite>solve_poisson_ivp</cite> if this assumption
+isn’t needed.</p>
+<section id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>molgrid<span class="classifier">MolGrid or AtomGrid</span></dt><dd><p>Molecular or atomic grid that is used for integration and expanding func into real spherical
+harmonic basis.</p>
+</dd>
+<dt>func_vals<span class="classifier">ndarray(N,)</span></dt><dd><p>The function values evaluated on all <span class="math notranslate nohighlight">\(N\)</span> points on the molecular grid.</p>
+</dd>
+<dt>transform<span class="classifier">BaseTransform, optional</span></dt><dd><p>Transformation from infinite domain <span class="math notranslate nohighlight">\(r \in [0, \infty)\)</span> to another
+domain that is a finite.</p>
+</dd>
+<dt>boundary<span class="classifier">float, optional</span></dt><dd><p>The boundary value of <span class="math notranslate nohighlight">\(g\)</span> in the limit of r to infinity.</p>
+</dd>
+<dt>include_origin<span class="classifier">bool, optional</span></dt><dd><p>If true, will add r=0 point when solving for the ode only. If false, it is recommended
+to have many radial points near the origin.</p>
+</dd>
+<dt>remove_large_pts<span class="classifier">float, optional</span></dt><dd><p>If true, will remove any points larger than <cite>remove_large_pts</cite> when solving for the ode
+only.</p>
+</dd>
+<dt>ode_params<span class="classifier">dict, optional</span></dt><dd><p>The parameters for the ode solver. See <cite>grid.ode.solve_ode_bvp</cite> for all options.</p>
+</dd>
+</dl>
+</section>
+<section id="returns">
+<h2>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>callable(ndarray(N, 3) -&gt; float) :</dt><dd><p>The solution to Poisson equaiton/potential <span class="math notranslate nohighlight">\(g : \mathbb{R}^3 \rightarrow \mathbb{R}\)</span>.</p>
+</dd>
+</dl>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Becke, A. D., &amp; Dickson, R. M. (1988). Numerical solution of Poisson`s equation in
+polyatomic molecules. The Journal of chemical physics, 89(5), 2993-2997.</p>
+</aside>
+</aside>
+</section>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="grid.poisson.solve_poisson_ivp">
+<span class="sig-prename descclassname"><span class="pre">grid.poisson.</span></span><span class="sig-name descname"><span class="pre">solve_poisson_ivp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">molgrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.molgrid.html#grid.molgrid.MolGrid" title="grid.molgrid.MolGrid"><span class="pre">MolGrid</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference internal" href="grid.atomgrid.html#grid.atomgrid.AtomGrid" title="grid.atomgrid.AtomGrid"><span class="pre">AtomGrid</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">func_vals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transform</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.rtransform.html#grid.rtransform.BaseTransform" title="grid.rtransform.BaseTransform"><span class="pre">BaseTransform</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_interval</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">tuple</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">(1000,</span> <span class="pre">1e-05)</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ode_params</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.poisson.solve_poisson_ivp" title="Link to this definition">#</a></dt>
+<dd><p>Return interpolation of the solution to the Poisson equation solved as an initial value problem.</p>
+<p>The Poisson equation solves for function <span class="math notranslate nohighlight">\(g\)</span> of the following:</p>
+<div class="math notranslate nohighlight">
+\[\nabla^2 g = (-4\pi) f,\]</div>
+<p>for a fixed function <span class="math notranslate nohighlight">\(f\)</span>, where <span class="math notranslate nohighlight">\(\nabla^2\)</span> is the Laplacian.  This
+is transformed to a set of ODE problems as an initial value problem.</p>
+<p>Ihe initial value problem is chosen so that the boundary of <span class="math notranslate nohighlight">\(g\)</span> for large r is set to
+<span class="math notranslate nohighlight">\(\int \int \int f(r, \theta, \phi) / r\)</span>.  Depending on <span class="math notranslate nohighlight">\(f\)</span>, this function has
+difficulty in capturing the origin <span class="math notranslate nohighlight">\(r=0\)</span> region, and is recommended to keep the
+final interval <span class="math notranslate nohighlight">\(a\)</span> close to zero.</p>
+<section id="id3">
+<h2>Parameters<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>molgrid<span class="classifier">MolGrid or AtomGrid</span></dt><dd><p>Molecular or atomic grid that is used for integration and expanding func into real
+spherical harmonic basis.</p>
+</dd>
+<dt>func_vals<span class="classifier">ndarray(N,)</span></dt><dd><p>The function values evaluated on all <span class="math notranslate nohighlight">\(N\)</span> points on the molecular grid.</p>
+</dd>
+<dt>transform<span class="classifier">BaseTransform, optional</span></dt><dd><p>Transformation from infinite domain <span class="math notranslate nohighlight">\(r \in [0, \infty)\)</span> to another
+domain that is a finite.</p>
+</dd>
+<dt>r_interval<span class="classifier">tuple, optional</span></dt><dd><p>The interval <span class="math notranslate nohighlight">\((b, a)\)</span> of <span class="math notranslate nohighlight">\(r\)</span> for which the ODE solver will start from and end,
+where <span class="math notranslate nohighlight">\(b&gt;a\)</span>. The value <span class="math notranslate nohighlight">\(b\)</span> should be large as it determines the asymptotic
+region of <span class="math notranslate nohighlight">\(g\)</span> and value <span class="math notranslate nohighlight">\(a\)</span> is recommended to be small but not zero depending
+on <span class="math notranslate nohighlight">\(f\)</span>.</p>
+</dd>
+<dt>ode_params<span class="classifier">dict, optional</span></dt><dd><p>The parameters for the ode solver. See <cite>grid.ode.solve_ode_ivp</cite> for all options.</p>
+</dd>
+</dl>
+</section>
+<section id="id4">
+<h2>Returns<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<dl class="simple">
+<dt>callable(ndarray(N, 3) -&gt; float) :</dt><dd><p>The solution to Poisson equaiton/potential <span class="math notranslate nohighlight">\(g : \mathbb{R}^3 \rightarrow \mathbb{R}\)</span>.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "theochem/grid",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pyapi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="grid.periodicgrid.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">grid.periodicgrid module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="grid.rtransform.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">grid.rtransform module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.poisson.solve_poisson_bvp"><code class="docutils literal notranslate"><span class="pre">solve_poisson_bvp()</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.poisson.solve_poisson_ivp"><code class="docutils literal notranslate"><span class="pre">solve_poisson_ivp()</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The QC-Devs Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

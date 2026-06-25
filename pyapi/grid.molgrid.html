@@ -1,0 +1,889 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>grid.molgrid module &#8212; Welcome to Grid Documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!--
+    this give us a css class that will be invisible only if js is disabled
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=8878045cc6db502f8baf" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=3c74b3bc" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=8878045cc6db502f8baf"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf" />
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=fab101a9"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=b8b12719"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'pyapi/grid.molgrid';</script>
+    <link rel="icon" href="../_static/grid_logo_website.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="grid.ngrid module" href="grid.ngrid.html" />
+    <link rel="prev" title="grid.hirshfeld module" href="grid.hirshfeld.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/grid_logo_website.svg" class="logo__image only-light" alt="Welcome to Grid Documentation - Home"/>
+    <img src="../_static/grid_logo_website.svg" class="logo__image only-dark pst-js-only" alt="Welcome to Grid Documentation - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Search</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to Grid’s Documentation!
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">User Documentation</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../onedgrids.html">One-Dimensional Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../radial_transf.html">Radial Transformations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../conventions.html">Conventions</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Example Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/One_dimensional_grids.html">One-Dimensional Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Angular_grid.html">Angular Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Atom_Grid_Construction.html">Atom Grid Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Atom_Grid.html">Atom Grid Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Molecular_Grid_Construction.html">Molecular Grid Construction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Molecular_Grid.html">Molecular Grid Application</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Cubic_Grids.html">Cubic Grids</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Interpolation_and_Poisson.html">Interpolation and Poisson</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/Multipole_Moments.html">Multipole Moments</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">API Documentation</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="grid.html">grid package</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="grid.angular.html">grid.angular module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.atomgrid.html">grid.atomgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.basegrid.html">grid.basegrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.becke.html">grid.becke module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.coulomb.html">grid.coulomb module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.cubic.html">grid.cubic module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.hirshfeld.html">grid.hirshfeld module</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">grid.molgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.ngrid.html">grid.ngrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.ode.html">grid.ode module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.onedgrid.html">grid.onedgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.periodicgrid.html">grid.periodicgrid module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.poisson.html">grid.poisson module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.rtransform.html">grid.rtransform module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="grid.utils.html">grid.utils module</a></li>
+</ul>
+</details></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+      <div class="sidebar-primary-item">
+<div id="ethical-ad-placement"
+      class="flat"
+      data-ea-publisher="readthedocs"
+      data-ea-type="readthedocs-sidebar"
+      data-ea-manual="true">
+</div></div>
+  </div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/theochem/grid" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/theochem/grid/issues/new?title=Issue%20on%20page%20%2Fpyapi/grid.molgrid.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/pyapi/grid.molgrid.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button pst-navbar-icon"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<button class="sidebar-toggle secondary-toggle btn btn-sm pst-navbar-icon" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>grid.molgrid module</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid"><code class="docutils literal notranslate"><span class="pre">MolGrid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.aim_weights"><code class="docutils literal notranslate"><span class="pre">MolGrid.aim_weights</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atcoords"><code class="docutils literal notranslate"><span class="pre">MolGrid.atcoords</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atgrids"><code class="docutils literal notranslate"><span class="pre">MolGrid.atgrids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atweights"><code class="docutils literal notranslate"><span class="pre">MolGrid.atweights</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_preset"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_preset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_pruned"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_pruned()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_size"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_size()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.get_atomic_grid"><code class="docutils literal notranslate"><span class="pre">MolGrid.get_atomic_grid()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.indices"><code class="docutils literal notranslate"><span class="pre">MolGrid.indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.interpolate"><code class="docutils literal notranslate"><span class="pre">MolGrid.interpolate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.save"><code class="docutils literal notranslate"><span class="pre">MolGrid.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="module-grid.molgrid">
+<span id="grid-molgrid-module"></span><h1>grid.molgrid module<a class="headerlink" href="#module-grid.molgrid" title="Link to this heading">#</a></h1>
+<p>Molecular grid class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">grid.molgrid.</span></span><span class="sig-name descname"><span class="pre">MolGrid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atnums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atgrids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">list</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aim_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="grid.basegrid.html#grid.basegrid.Grid" title="grid.basegrid.Grid"><code class="xref py py-class docutils literal notranslate"><span class="pre">Grid</span></code></a></p>
+<p>Molecular grid class for integration of three-dimensional functions.</p>
+<p>Molecular grid is defined here to be a weighted average of <span class="math notranslate nohighlight">\(M\)</span> atomic grids
+(see AtomGrid). This is defined by a atom in molecule weights (or nuclear weight functions)
+<span class="math notranslate nohighlight">\(w_n(r)\)</span> for each center n such that <span class="math notranslate nohighlight">\(\sum^M_n w_n(r) = 1\)</span> for all points
+<span class="math notranslate nohighlight">\(r\in\mathbb{R}^3\)</span>. <a class="footnote-reference brackets" href="#id2" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a></p>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Link to this heading">#</a></h2>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id2" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
+<p>Becke, Axel D. “A multicenter numerical integration scheme for polyatomic molecules.”
+The Journal of chemical physics 88.4 (1988): 2547-2553.</p>
+</aside>
+</aside>
+<dl class="py property">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.aim_weights">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aim_weights</span></span><a class="headerlink" href="#grid.molgrid.MolGrid.aim_weights" title="Link to this definition">#</a></dt>
+<dd><p>Get the atom in molecules/nuclear weight function of the molecular grid.</p>
+<section id="returns">
+<h3>Returns<a class="headerlink" href="#returns" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>ndarray(K,):</dt><dd><p>List of atomic weights where <span class="math notranslate nohighlight">\(K = \sum_n N_i\)</span> and <span class="math notranslate nohighlight">\(N_i\)</span> is the number
+of points in the ith atomic grid.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.atcoords">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atcoords</span></span><a class="headerlink" href="#grid.molgrid.MolGrid.atcoords" title="Link to this definition">#</a></dt>
+<dd><p>ndarray(M, 3) : Center/Atomic coordinates.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.atgrids">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atgrids</span></span><a class="headerlink" href="#grid.molgrid.MolGrid.atgrids" title="Link to this definition">#</a></dt>
+<dd><p>List[AtomGrid] : List of atomic grids for each center. Returns None if <cite>store</cite> false.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.atweights">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">atweights</span></span><a class="headerlink" href="#grid.molgrid.MolGrid.atweights" title="Link to this definition">#</a></dt>
+<dd><p>Get the atomic grid weights for all points, i.e. without atom in molecule weights.</p>
+<section id="id3">
+<h3>Returns<a class="headerlink" href="#id3" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>ndarray(K,):</dt><dd><p>List of weights of atomic grid for each point,where <span class="math notranslate nohighlight">\(K = \sum_n N_i\)</span> and
+<span class="math notranslate nohighlight">\(N_i\)</span> is the number of points in the ith atomic grid.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.from_preset">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_preset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atnums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atcoords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">preset</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.basegrid.html#grid.basegrid.OneDGrid" title="grid.basegrid.OneDGrid"><span class="pre">OneDGrid</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">dict</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aim_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.from_preset" title="Link to this definition">#</a></dt>
+<dd><p>Construct molecular grid wih preset parameters.</p>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>atnums<span class="classifier">np.ndarray(M,)</span></dt><dd><p>Array of atomic numbers.</p>
+</dd>
+<dt>atcoords<span class="classifier">np.ndarray(M, 3)</span></dt><dd><p>Atomic coordinates of atoms.</p>
+</dd>
+<dt>preset<span class="classifier">(str, list[str], dict[int: str])</span></dt><dd><p>Preset grid accuracy scheme. If string is provided, then preset is used
+for all atoms, either it is specified by a list, or a dictionary whose keys
+are from <cite>atnums</cite>. These predefined grid specify the radial sectors and
+their corresponding number of Lebedev grid points. Supported preset options include:
+‘coarse’, ‘medium’, ‘fine’, ‘veryfine’, ‘ultrafine’, and ‘insane’.
+Other options include the “standard grids”:
+‘sg_0’, ‘sg_1’, ‘sg_2’, and ‘sg_3’, and the Ochsenfeld grids:
+‘g1’, ‘g2’, ‘g3’, ‘g4’, ‘g5’, ‘g6’, and ‘g7’, with higher number indicating
+greater accuracy but denser grid. See <cite>Notes</cite> for more information.</p>
+</dd>
+<dt>rgrid<span class="classifier">(OneDGrid, list[OneDGrid], dict[int: OneDGrid], None), optional</span></dt><dd><p>One dimensional radial grid. If of type <cite>OneDGrid</cite> then this radial grid is used for
+all atoms. If a list is provided, then ith grid correspond to the ith atom.  If
+dictionary is provided, then the keys correspond to the <cite>atnums[i]</cite> attribute.
+If None, a default radial grid (PowerRTransform of UniformInteger grid) is constructed
+based on the given atomic numbers.</p>
+</dd>
+<dt>aim_weights<span class="classifier">Callable or np.ndarray(K,), optional</span></dt><dd><p>Atoms in molecule weights. If None, then aim_weights is Becke weights with order=3.</p>
+</dd>
+<dt>rotate<span class="classifier">bool or int, optional</span></dt><dd><p>Flag to set auto rotation for atomic grid, if given int, the number
+will be used as a seed to generate rantom matrix.</p>
+</dd>
+<dt>store<span class="classifier">bool, optional</span></dt><dd><p>Store atomic grid as a class attribute.</p>
+</dd>
+</dl>
+</section>
+<section id="notes">
+<h3>Notes<a class="headerlink" href="#notes" title="Link to this heading">#</a></h3>
+<ul class="simple">
+<li><p>The standard and Ochsenfeld presets were not designed with symmetric spherical t-design
+in mind.</p></li>
+<li><p>The “standard grids” <a class="footnote-reference brackets" href="#id7" id="id4" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a> “SG-0” and “SG-1” are designed for large molecules with LDA
+(GGA) functionals, whereas “SG-2” and “SG-3” are designed for Meta-GGA functionals and
+B95/Minnesota functionals, respectively.</p></li>
+<li><p>The Ochsenfeld pruned grids <a class="footnote-reference brackets" href="#id8" id="id5" role="doc-noteref"><span class="fn-bracket">[</span>3<span class="fn-bracket">]</span></a> are obtained based on the paper.</p></li>
+</ul>
+</section>
+<section id="id6">
+<h3>References<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<aside class="footnote-list brackets">
+<aside class="footnote brackets" id="id7" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id4">2</a><span class="fn-bracket">]</span></span>
+<p>Y. Shao, et al. Advances in molecular quantum chemistry contained in the Q-Chem 4
+program package. Mol. Phys. 113, 184-215 (2015)</p>
+</aside>
+<aside class="footnote brackets" id="id8" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id5">3</a><span class="fn-bracket">]</span></span>
+<p>Laqua, H., Kussmann, J., &amp; Ochsenfeld, C. (2018). An improved molecular partitioning
+scheme for numerical quadratures in density functional theory. The Journal of
+Chemical Physics, 149(20).</p>
+</aside>
+</aside>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.from_pruned">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_pruned</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atnums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atcoords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r_sectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">float</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">float</span><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">d_sectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">50</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">*</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">s_sectors</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">list</span><span class="p"><span class="pre">[</span></span><span class="pre">int</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.basegrid.html#grid.basegrid.OneDGrid" title="grid.basegrid.OneDGrid"><span class="pre">OneDGrid</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">list</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aim_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.ndarray</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.from_pruned" title="Link to this definition">#</a></dt>
+<dd><p>Initialize a MolGrid instance with pruned method from AtomGrid.</p>
+<section id="id9">
+<h3>Parameters<a class="headerlink" href="#id9" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>atnums: ndarray(M,)</dt><dd><p>List of atomic numbers for each atom.</p>
+</dd>
+<dt>atcoords: np.ndarray(M, 3)</dt><dd><p>Three-dimensional Cartesian coordinates for each atoms in atomic units.</p>
+</dd>
+<dt>radius: float, List[float]</dt><dd><p>The atomic radius to be multiplied with <cite>r_sectors</cite> in atomic units (to make the
+radial sectors atom specific). If float, then the same atomic radius is used for all
+atoms, otherwise a list with <span class="math notranslate nohighlight">\(M\)</span> elements is used, where <span class="math notranslate nohighlight">\(M\)</span> is the number
+of atoms in the molecule. If list, then the ith element is used for the ith atom.</p>
+</dd>
+<dt>r_sectors<span class="classifier">list of List[float]</span></dt><dd><p>List of sequences of the boundary radius (in atomic units) specifying sectors of
+the pruned radial grid of <span class="math notranslate nohighlight">\(M\)</span> atoms. For the first atom, the first
+sector is <code class="docutils literal notranslate"><span class="pre">(0,</span> <span class="pre">radius*r_sectors[0][0])</span></code>, then <code class="docutils literal notranslate"><span class="pre">(radius*r_sectors[0][0],</span>
+<span class="pre">radius*r_sectors[0][1])</span></code>, and so on. See AtomGrid.from_pruned for more information.</p>
+</dd>
+<dt>d_sectors<span class="classifier">int or list of List[int], optional</span></dt><dd><p>List of sequences of the angular degrees for radial sectors of <span class="math notranslate nohighlight">\(M\)</span> atoms.
+If a number is given, then the same number of degrees is used for all sectors of
+all atoms.</p>
+</dd>
+<dt>s_sectors<span class="classifier">int or list of List[int] or None, optional, keyword-only</span></dt><dd><p>List of sequences of angular sizes for each radial sector of of <span class="math notranslate nohighlight">\(M\)</span> atoms.
+If both <cite>d_sectors</cite> and <cite>s_sectors</cite> are given, <cite>s_sectors</cite> is used.</p>
+</dd>
+<dt>rgrid<span class="classifier">OneDGrid or List[OneDGrid] or Dict[int: OneDGrid], optional</span></dt><dd><p>One dimensional grid for the radial component.  If a list is provided,then ith
+grid correspond to the ith atom.  If dictionary is provided, then the keys are
+correspond to the <cite>atnums[i]</cite> attribute. If None, then using atomic numbers it will
+generate a default radial grid (PowerRTransform of UniformInteger grid).</p>
+</dd>
+<dt>aim_weights: Callable or np.ndarray(sum^M_n N_n,), optional</dt><dd><p>Atoms in molecule/nuclear weights <span class="math notranslate nohighlight">\({ {w_n(r_k)}_k^{N_i}}_n^{M}\)</span>, where
+<span class="math notranslate nohighlight">\(N_i\)</span> is the number of points in the ith atomic grid. If None, then aim_weights
+is Becke weights with order=3.</p>
+</dd>
+<dt>rotate<span class="classifier">bool or int , optional</span></dt><dd><p>Flag to set auto rotation for atomic grid, if given int, the number
+will be used as a seed to generate random matrix.</p>
+</dd>
+<dt>store<span class="classifier">bool, optional</span></dt><dd><p>Flag to store each original atomic grid information.</p>
+</dd>
+</dl>
+</section>
+<section id="id10">
+<h3>Returns<a class="headerlink" href="#id10" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>MolGrid:</dt><dd><p>Molecular grid class for integration.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.from_size">
+<em class="property"><span class="pre">classmethod</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">from_size</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">atnums</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">atcoords</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">np.ndarray</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rgrid</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="grid.basegrid.html#grid.basegrid.OneDGrid" title="grid.basegrid.OneDGrid"><span class="pre">OneDGrid</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">None</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">aim_weights</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">callable</span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><span class="pre">np.ndarray</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotate</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">37</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">store</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">bool</span></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.from_size" title="Link to this definition">#</a></dt>
+<dd><p>Initialize a MolGrid instance with Horton Style input.</p>
+<section id="id11">
+<h3>Parameters<a class="headerlink" href="#id11" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>atnums<span class="classifier">np.ndarray(M, 3)</span></dt><dd><p>Atomic number of <span class="math notranslate nohighlight">\(M\)</span> atoms in molecule.</p>
+</dd>
+<dt>atcoords<span class="classifier">np.ndarray(N, 3)</span></dt><dd><p>Cartesian coordinates for each atoms</p>
+</dd>
+<dt>size<span class="classifier">int</span></dt><dd><p>Number of points on each shell of angular grid.</p>
+</dd>
+<dt>rgrid<span class="classifier">OneDGrid or None, optional</span></dt><dd><p>One-dimensional grid to construct the atomic grid. If none, then
+default radial grid is generated based on atomic numbers.</p>
+</dd>
+<dt>aim_weights<span class="classifier">Callable or np.ndarray(K,), optional</span></dt><dd><p>Atoms in molecule weights. If None, then aim_weights is Becke weights with order=3.</p>
+</dd>
+<dt>rotate<span class="classifier">bool or int , optional</span></dt><dd><p>Flag to set auto rotation for atomic grid, if given int, the number
+will be used as a seed to generate rantom matrix.</p>
+</dd>
+<dt>store<span class="classifier">bool, optional</span></dt><dd><p>Flag to store each original atomic grid information</p>
+</dd>
+</dl>
+</section>
+<section id="id12">
+<h3>Returns<a class="headerlink" href="#id12" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>MolGrid</dt><dd><p>MolGrid instance with specified grid property</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.get_atomic_grid">
+<span class="sig-name descname"><span class="pre">get_atomic_grid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">index</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">int</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.get_atomic_grid" title="Link to this definition">#</a></dt>
+<dd><p>Get atomic grid corresponding to the given atomic index.</p>
+<section id="id13">
+<h3>Parameters<a class="headerlink" href="#id13" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>index<span class="classifier">int</span></dt><dd><p>index of atom starting from 0 to <span class="math notranslate nohighlight">\(N-1\)</span> where <span class="math notranslate nohighlight">\(N\)</span> is the
+number of atoms in molecule.</p>
+</dd>
+</dl>
+</section>
+<section id="id14">
+<h3>Returns<a class="headerlink" href="#id14" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>AtomGrid or LocalGrid</dt><dd><p>If store=True, the AtomGrid instance used is returned.
+If store=False, the LocalGrid containing points and weights of AtomGrid
+is returned.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.indices">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">indices</span></span><a class="headerlink" href="#grid.molgrid.MolGrid.indices" title="Link to this definition">#</a></dt>
+<dd><p>Get the indices of the molecular grid.</p>
+<section id="id15">
+<h3>Returns<a class="headerlink" href="#id15" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>ndarray(M + 1,) :</dt><dd><p>List of indices <span class="math notranslate nohighlight">\([i_0, i_1, \cdots]\)</span> that whose indices range [i_k, i_{k+1}]
+specify which points in <cite>points</cite> correspond to kth atomic grid.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.interpolate">
+<span class="sig-name descname"><span class="pre">interpolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">func_vals</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">ndarray</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.interpolate" title="Link to this definition">#</a></dt>
+<dd><p>Return function that interpolates (and its derivatives) from function values.</p>
+<p>Consider a real-valued function <span class="math notranslate nohighlight">\(f(r, \theta, \phi) = \sum_A f_A(r, \theta, \phi)\)</span>
+written as a sum of atomic centers <span class="math notranslate nohighlight">\(f_A(r, \theta, \phi)\)</span>.  Each of these
+functions can be further decomposed based on the atom grid centered at <span class="math notranslate nohighlight">\(A\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f_A(r, \theta, \phi) = \sum_l \sum_{m=-l}^l \sum_i \rho^A_{ilm}(r) Y_{lm}(\theta, \phi)\]</div>
+<p>A cubic spline is used to interpolate the radial functions <span class="math notranslate nohighlight">\(\sum_i \rho^A_{ilm}(r)\)</span>
+based on the atomic grid centered at <span class="math notranslate nohighlight">\(A\)</span>.
+This is then multipled by the corresponding spherical harmonics at all
+<span class="math notranslate nohighlight">\((\theta_j, \phi_j)\)</span> angles and summed to obtain approximation to <span class="math notranslate nohighlight">\(f_A\)</span>. This
+is then further summed over all centers to get <span class="math notranslate nohighlight">\(f\)</span>.</p>
+<section id="id16">
+<h3>Parameters<a class="headerlink" href="#id16" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>func_vals: ndarray(sum_i N_i,)</dt><dd><p>The function values evaluated on all <span class="math notranslate nohighlight">\(N_i\)</span> points on the <span class="math notranslate nohighlight">\(i\)</span>th atomic grid.</p>
+</dd>
+</dl>
+</section>
+<section id="id17">
+<h3>Returns<a class="headerlink" href="#id17" title="Link to this heading">#</a></h3>
+<dl>
+<dt>Callable[[ndarray(M, 3), int] -&gt; ndarray(M)]:</dt><dd><p>Callable function that interpolates the function and its derivative provided.
+The function takes the following attributes:</p>
+<blockquote>
+<div><dl class="simple">
+<dt>points<span class="classifier">ndarray(N, 3)</span></dt><dd><p>Cartesian coordinates of <span class="math notranslate nohighlight">\(N\)</span> points to evaluate the splines on.</p>
+</dd>
+<dt>deriv<span class="classifier">int, optional</span></dt><dd><p>If deriv is zero, then only returns function values. If it is one, then
+returns the first derivative of the interpolated function with respect to either
+Cartesian or spherical coordinates. Only higher-order derivatives
+(<cite>deriv</cite>=2,3) are supported for the derivatives wrt to radial components.</p>
+</dd>
+<dt>deriv_spherical<span class="classifier">bool</span></dt><dd><p>If True, then returns the derivatives with respect to spherical coordinates
+<span class="math notranslate nohighlight">\((r, \theta, \phi)\)</span>. Default False.</p>
+</dd>
+<dt>only_radial_deriv<span class="classifier">bool</span></dt><dd><p>If true, then the derivative wrt to radius <span class="math notranslate nohighlight">\(r\)</span> is returned.</p>
+</dd>
+</dl>
+</div></blockquote>
+<p>This function returns the following.</p>
+<blockquote>
+<div><dl class="simple">
+<dt>ndarray(M,…):</dt><dd><p>The interpolated function values or its derivatives with respect to Cartesian
+<span class="math notranslate nohighlight">\((x,y,z)\)</span> or if <cite>deriv_spherical</cite> then <span class="math notranslate nohighlight">\((r, \theta, \phi)\)</span> or
+if <cite>only_radial_derivs</cite> then derivative wrt to <span class="math notranslate nohighlight">\(r\)</span> is only returned.</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="grid.molgrid.MolGrid.save">
+<span class="sig-name descname"><span class="pre">save</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filename</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#grid.molgrid.MolGrid.save" title="Link to this definition">#</a></dt>
+<dd><p>Save molecular grid attributes as a npz file.</p>
+<section id="id18">
+<h3>Parameters<a class="headerlink" href="#id18" title="Link to this heading">#</a></h3>
+<dl class="simple">
+<dt>filename: str</dt><dd><p>The path/name of the .npz file.</p>
+</dd>
+</dl>
+</section>
+</dd></dl>
+
+</section>
+</dd></dl>
+
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "theochem/grid",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./pyapi"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="grid.hirshfeld.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">grid.hirshfeld module</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="grid.ngrid.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">grid.ngrid module</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item"><div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav id="pst-page-toc-nav" class="page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid"><code class="docutils literal notranslate"><span class="pre">MolGrid</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.aim_weights"><code class="docutils literal notranslate"><span class="pre">MolGrid.aim_weights</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atcoords"><code class="docutils literal notranslate"><span class="pre">MolGrid.atcoords</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atgrids"><code class="docutils literal notranslate"><span class="pre">MolGrid.atgrids</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.atweights"><code class="docutils literal notranslate"><span class="pre">MolGrid.atweights</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_preset"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_preset()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_pruned"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_pruned()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.from_size"><code class="docutils literal notranslate"><span class="pre">MolGrid.from_size()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.get_atomic_grid"><code class="docutils literal notranslate"><span class="pre">MolGrid.get_atomic_grid()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.indices"><code class="docutils literal notranslate"><span class="pre">MolGrid.indices</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.interpolate"><code class="docutils literal notranslate"><span class="pre">MolGrid.interpolate()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#grid.molgrid.MolGrid.save"><code class="docutils literal notranslate"><span class="pre">MolGrid.save()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By The QC-Devs Community
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2022-2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=8878045cc6db502f8baf"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=8878045cc6db502f8baf"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
